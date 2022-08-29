@@ -1,0 +1,24 @@
+<div class="outer">
+  <div class="workspace">
+
+    <div class="input_container">
+      <mat-form-field class="input_form" appearance="fill">
+        <mat-label>Поиск</mat-label>
+        <mat-icon matPrefix aria-label="Search">search</mat-icon>
+        <input matInput type="text" [(ngModel)]="searchValue" placeholder="Введите имя автора">
+        <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div class="card_container">
+      <mat-card class="custom_card" *ngFor="let post of currentPosts| search:searchValue:'author'">
+        <mat-card-title>{{post.title}}</mat-card-title>
+        <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
+        <mat-card-content>{{post.body}}</mat-card-content>
+      </mat-card>
+      <p *ngIf="!extraService.foundResult">Нет Результатов!</p>
+    </div>
+  </div>
+</div>
