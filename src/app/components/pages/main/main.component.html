@@ -1,5 +1,5 @@
 <div class="outer">
-  <div class="workspace">
+  <div class="workspace" *ngIf="currentPosts.length > 0">
 
     <div class="input_container">
       <mat-form-field class="input_form" appearance="fill">
@@ -21,4 +21,7 @@
       <p *ngIf="!extraService.foundResult">Нет Результатов!</p>
     </div>
   </div>
+
+  <div class="empty" *ngIf="currentPosts.length === 0">Нет результатов!</div>
+
 </div>
